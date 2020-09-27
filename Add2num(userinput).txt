@@ -1,0 +1,22 @@
+; program to add two user input numbers
+
+INCLUDE irvine32.inc
+.data
+	msg1 byte "Enter a number= ", 0
+	msg2 byte "Sum is ",0
+.code
+main PROC
+	mov edx, offset msg1
+	call writestring
+	call readint ; read first number
+	mov ebx, eax ; transferring first num to register ebx
+	mov edx, offset msg1
+	call writestring
+	call readint ; read second number
+	add eax,ebx
+	mov edx, offset msg2
+	call writestring
+	call writeint ; printing result to user
+	invoke ExitProcess,0
+main ENDP
+END main
